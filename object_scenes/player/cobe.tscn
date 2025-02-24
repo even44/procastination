@@ -34,40 +34,32 @@ shape = SubResource("BoxShape3D_dllqs")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.45, 0.45)
-enabled = false
 hit_back_faces = false
 
 [node name="RayCast3D2" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.45, -0.45)
-enabled = false
 hit_back_faces = false
 
 [node name="RayCast3D3" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.45, -0.45)
-enabled = false
 hit_back_faces = false
 
 [node name="RayCast3D4" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, -0.45, 0.45)
-enabled = false
 hit_back_faces = false
 
 [node name="RayCast3D5" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.45, 0.45)
-enabled = false
 hit_back_faces = false
 
 [node name="RayCast3D6" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.45, 0.45)
-enabled = false
 hit_back_faces = false
 
 [node name="RayCast3D7" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, -0.45, -0.45)
-enabled = false
 hit_back_faces = false
 
 [node name="RayCast3D8" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0.45, -0.45)
-enabled = false
 hit_back_faces = false

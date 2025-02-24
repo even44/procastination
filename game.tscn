@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0bjumb4qeqk7"]
+[gd_scene load_steps=5 format=3 uid="uid://c0bjumb4qeqk7"]
 
 [ext_resource type="Script" uid="uid://cbgmihqqc8c3s" path="res://scripts/game_initiator.gd" id="1_feb5d"]
-[ext_resource type="PackedScene" uid="uid://b15q0aaxeafeb" path="res://object_scenes/player/cobe.tscn" id="2_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://7utt36otyu2y" path="res://object_scenes/player/camera.tscn" id="3_7jktm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nq4xv"]
 sky_top_color = Color(0.29373, 0.453277, 0.674563, 1)
@@ -26,13 +24,6 @@ physics_interpolation_mode = 1
 
 [node name="game_initiator" type="Node" parent="."]
 script = ExtResource("1_feb5d")
-
-[node name="Cobe" parent="." node_paths=PackedStringArray("camera_parent") instance=ExtResource("2_fc0e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-camera_parent = NodePath("../Camera")
-
-[node name="Camera" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_7jktm")]
-target = NodePath("../Cobe")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.951384, -0.0214983, 0.307255, 0.0803804, 0.945662, 0.315057, -0.297332, 0.324438, -0.89796, -0.0355268, 2.1993, -1.19209e-07)

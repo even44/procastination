@@ -1,6 +1,5 @@
 extends RigidBody3D
-
-@onready var ray: RayCast3D = $"RayCast3D" 
+class_name Cobe
 
 @export_category("Setup")
 @export var camera_parent: Node3D
@@ -21,28 +20,28 @@ func _ready() -> void:
 		if child is Camera3D:
 			camera = child
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	move_input = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("jump"):
-		if is_grounded() and get_contact_count() > 0:
+		if is_grounded():
 			jump()
 	if Input.is_action_pressed("run"):
 		should_run = true
 	else:
 		should_run = false
 
-func _physics_process(delta: float) -> void:
-	move(move_input,should_run, delta)
+func _physics_process(_delta: float) -> void:
 	is_grounded()
+	move(move_input,should_run)
 
-func move(input: Vector2, run: bool, delta: float):
+func move(input: Vector2, run: bool):
 	var forceDir = Vector3(input.x, 0, -input.y).normalized()
 	var relativeDir = forceDir.rotated(Vector3.UP, camera.global_rotation.y + deg_to_rad(90))
 	#DebugDraw3D.draw_arrow(global_position, global_position + relativeDir * 4, Color.RED, 0.2, false)
 	var torque = 0
-	if should_run:
+	if run:
 		torque = runTorque
 	else:
 		torque = walkTorque
@@ -53,14 +52,18 @@ func jump():
 	apply_impulse(jumpDir * jumpImpulse)
 	
 func is_grounded() -> bool:
+	var grounded = false
 	for ray in grounded_rays:
 		var global_target = ray.global_position + Vector3.DOWN * 0.2
 		ray.target_position = ray.to_local(global_target)
-		ray.force_raycast_update()
-		#DebugDraw3D.draw_arrow(ray.global_position, ray.global_position + ray.target_position, Color.RED, 0.1)
+		#DebugDraw3D.draw_arrow(ray.global_position, global_target, Color.RED, 0.2, false, 0)
 		if ray.is_colliding():
-			return true
-	return false
-		
+			grounded = true
+	return grounded
+
+
+func Respawn(_position: Vector3, _rotation: Vector3):
+	global_position = _position
+	global_rotation = _rotation
 	
 	

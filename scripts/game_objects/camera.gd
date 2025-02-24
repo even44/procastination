@@ -1,4 +1,5 @@
 extends Node3D
+class_name ThridPersonCamera
 
 @export_category("Setup")
 @export var target: Node3D
@@ -14,7 +15,7 @@ var mouse_input: Vector2
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_ESCAPE):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
@@ -39,3 +40,7 @@ func _input(event: InputEvent) -> void:
 		mouse_input += event.relative
 	if event is InputEventMouseButton:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func Respawn(_position: Vector3, _rotation: Vector3):
+	global_position = _position
+	global_rotation = _rotation

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GameLevel" load_steps=3 format=3 uid="uid://cubqvflq3f37u"]
+
+[ext_resource type="PackedScene" uid="uid://bxx47kkgiu8cl" path="res://levels/level_01.tscn" id="1_w70fr"]
+[ext_resource type="Script" uid="uid://da3grw2kkhptp" path="res://resources/game_level.gd" id="2_1v7l5"]
+
+[resource]
+script = ExtResource("2_1v7l5")
+level_scene = ExtResource("1_w70fr")
+spawn_position = Vector3(0, 5, 0)
+spawn_rotation = Vector3(0, 0, 0)
