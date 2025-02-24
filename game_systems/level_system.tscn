@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31v6ucec70e"]
+
+[ext_resource type="Script" uid="uid://d15hr4cp33vwb" path="res://scripts/game_systems/level_system.gd" id="1_1yy5o"]
+[ext_resource type="PackedScene" uid="uid://bxx47kkgiu8cl" path="res://levels/level_01.tscn" id="2_np3h2"]
+
+[node name="LevelSystem" type="Node"]
+script = ExtResource("1_1yy5o")
+levels = Array[PackedScene]([ExtResource("2_np3h2")])
