@@ -20,7 +20,6 @@ fog_density = 1.0
 fog_depth_curve = 4.43828
 
 [node name="Node3D" type="Node3D"]
-physics_interpolation_mode = 1
 
 [node name="game_initiator" type="Node" parent="."]
 script = ExtResource("1_feb5d")

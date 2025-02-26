@@ -12,12 +12,18 @@ var player: Cobe
 var camera: ThridPersonCamera
 
 func _init():
-	# Create player systems
-	player = player_scene.instantiate()
-	camera = camera_scene.instantiate()
+	create_player_and_camera()
 
+func create_player_and_camera():
+	create_player()
+	create_camera()
 	player.camera_parent = camera
 	camera.target = player
+func create_player():
+	player = player_scene.instantiate()
+func create_camera():
+	camera = camera_scene.instantiate()
+
 
 func spawn_player_and_camera(_position, _rotation):
 	spawn_player(_position, _rotation)
@@ -25,16 +31,14 @@ func spawn_player_and_camera(_position, _rotation):
 
 func spawn_player(_position: Vector3, _rotation: Vector3):
 	spawn_node.add_child(player)
+	player.global_position = _position
+	player.global_rotation = _rotation
+
 func spawn_camera(_position, _rotation):
 	spawn_node.add_child(camera)
 
 func respawn_player_and_camera(_position: Vector3, _rotation: Vector3):
-	respawn_player(_position, _rotation)
-	respawn_camera(_position, _rotation)
-
-func respawn_player(_position: Vector3, _rotation: Vector3):
-	player.global_position = _position
-	player.global_rotation = _rotation
-func respawn_camera(_position, _rotation):
-	camera.global_position = _position
-	camera.global_rotation = _rotation
+	player.queue_free()
+	camera.queue_free()
+	create_player_and_camera()
+	spawn_player_and_camera(_position, _rotation)

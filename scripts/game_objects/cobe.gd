@@ -6,13 +6,19 @@ class_name Cobe
 @export var grounded_rays: Array[RayCast3D]
 
 @export_category("Force Properties")
-@export var walkTorque = 200
-@export var runTorque = 300
-@export var jumpImpulse = 100
+@export var walk_torque = 200
+@export var run_torque = 400
+@export var jump_impulse = 150
+
+@export_category("Ray Properties")
+@export var grounded_ray_length = 0.3
 
 var camera: Camera3D
 var should_run: bool = false
 var move_input: Vector2 = Vector2.ZERO
+
+var jump_delay: float = 0.1
+var current_jump_time: float
 
 func _ready() -> void:
 	var children = camera_parent.get_children(true)
@@ -20,12 +26,14 @@ func _ready() -> void:
 		if child is Camera3D:
 			camera = child
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	move_input = Input.get_vector("move_left", "move_right", "move_backward", "move_forward")
+	if current_jump_time > 0:
+		current_jump_time -= delta
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("jump"):
-		if is_grounded():
+		if is_grounded() and current_jump_time <= 0:
 			jump()
 	if Input.is_action_pressed("run"):
 		should_run = true
@@ -42,19 +50,20 @@ func move(input: Vector2, run: bool):
 	#DebugDraw3D.draw_arrow(global_position, global_position + relativeDir * 4, Color.RED, 0.2, false)
 	var torque = 0
 	if run:
-		torque = runTorque
+		torque = run_torque
 	else:
-		torque = walkTorque
+		torque = walk_torque
 	apply_torque(relativeDir * torque)
 
 func jump():
 	var jumpDir = Vector3.UP
-	apply_impulse(jumpDir * jumpImpulse)
+	apply_impulse(jumpDir * jump_impulse)
+	current_jump_time = jump_delay
 	
 func is_grounded() -> bool:
 	var grounded = false
 	for ray in grounded_rays:
-		var global_target = ray.global_position + Vector3.DOWN * 0.2
+		var global_target = ray.global_position + Vector3.DOWN * grounded_ray_length
 		ray.target_position = ray.to_local(global_target)
 		#DebugDraw3D.draw_arrow(ray.global_position, global_target, Color.RED, 0.2, false, 0)
 		if ray.is_colliding():

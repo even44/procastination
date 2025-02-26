@@ -34,7 +34,10 @@ func start_game():
 	level_system.load_level(0)
 
 func game_loop():
-	pass
+	while true:
+		if player_spawner.player.global_position.y < -10:
+			level_system.restart_level()
+		await get_tree().create_timer(1).timeout
 
 func exit():
 	pass
