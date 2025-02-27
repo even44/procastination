@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://isj11h7vu2yn"]
 
 [ext_resource type="PackedScene" uid="uid://ds2rvc2eutcfx" path="res://object_scenes/obstacles/spinners/spinner_2m.tscn" id="1_d1o1r"]
-[ext_resource type="Material" uid="uid://ywgvjkim7w0o" path="res://materials/platform/platform_white_mat.tres" id="1_ntc8k"]
+[ext_resource type="Material" uid="uid://ywgvjkim7w0o" path="res://materials/platform/platform_green_mat.tres" id="1_ntc8k"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ntc8k"]
 material = ExtResource("1_ntc8k")

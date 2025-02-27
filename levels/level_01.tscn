@@ -1,14 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxx47kkgiu8cl"]
 
+[ext_resource type="Material" uid="uid://ywgvjkim7w0o" path="res://materials/platform/platform_green_mat.tres" id="1_gg43x"]
 [ext_resource type="PackedScene" uid="uid://isj11h7vu2yn" path="res://object_scenes/platforms/spinner_platform_1x_2m.tscn" id="1_ty3hu"]
 [ext_resource type="PackedScene" uid="uid://nndxkxuntndg" path="res://object_scenes/platforms/ice_ball_platform_3x_2m.tscn" id="2_mckh2"]
 [ext_resource type="PackedScene" uid="uid://djmubjaxpg8gq" path="res://object_scenes/platforms/bouncy_ball_cage_platform.tscn" id="3_81a5f"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyuys"]
-grow_amount = -3.165
-
 [sub_resource type="BoxMesh" id="BoxMesh_x0wso"]
-material = SubResource("StandardMaterial3D_yyuys")
+material = ExtResource("1_gg43x")
 size = Vector3(10, 1, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ty3hu"]
@@ -70,6 +68,17 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
 shape = SubResource("BoxShape3D_ty3hu")
 
+[node name="StaticBody3D7" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.2882, 0, -7.62728)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D7"]
+gi_mode = 2
+mesh = SubResource("BoxMesh_x0wso")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7"]
+shape = SubResource("BoxShape3D_ty3hu")
+
 [node name="StaticBody3D6" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0863037, 0, 25.924)
 
@@ -80,6 +89,24 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
 shape = SubResource("BoxShape3D_ty3hu")
+
+[node name="SpinnerPlatform1x2m" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1924, 9.53674e-07, -34.3435)
+
+[node name="SpinnerPlatform1x2m2" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.2561, 0, -31.4559)
+
+[node name="SpinnerPlatform1x2m3" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.5524, 0, -34.2011)
+
+[node name="Platform3xIceBall" parent="StaticBody3D6" instance=ExtResource("2_mckh2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.0165, 0, -34.1313)
+
+[node name="SpinnerPlatform1x2m4" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 42.4329, -4.76837e-07, -34.2388)
+
+[node name="BouncyBallCagePlatform" parent="StaticBody3D6" instance=ExtResource("3_81a5f")]
+transform = Transform3D(0.00296701, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00296701, 52.6945, 0.295066, -34.2232)
 
 [node name="SpinnerPlatform1x2m" parent="." instance=ExtResource("1_ty3hu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68381, 0, -3.71424)
