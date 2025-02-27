@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://nndxkxuntndg"]
+
+[ext_resource type="PackedScene" uid="uid://fovjaa7nbvg2" path="res://object_scenes/obstacles/balls/slipperyball_2m.tscn" id="1_u6ak6"]
+
+[node name="Platform3xIceBall" type="Node3D"]
+
+[node name="SlipperyBall2m" parent="." instance=ExtResource("1_u6ak6")]
+transform = Transform3D(0.968949, -0.117888, 0.217346, 0.0340749, 0.9343, 0.354854, -0.2449, -0.33643, 0.909307, 0, 0, 0)
+
+[node name="SlipperyBall2m2" parent="." instance=ExtResource("1_u6ak6")]
+transform = Transform3D(0.473551, -0.876532, 0.08626, 0.115906, 0.159104, 0.980435, -0.873107, -0.454288, 0.176939, 0, 0, -2.1)
+
+[node name="SlipperyBall2m3" parent="." instance=ExtResource("1_u6ak6")]
+transform = Transform3D(0.511393, -0.823409, -0.245915, -0.456165, -0.0175899, -0.889722, 0.728279, 0.567175, -0.384605, 0, 0, 2.1)

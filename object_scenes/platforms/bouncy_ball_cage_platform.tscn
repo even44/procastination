@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://djmubjaxpg8gq"]
+
+[ext_resource type="PackedScene" uid="uid://c3crougfwjqjl" path="res://object_scenes/obstacles/balls/bouncy_ball_1_5m.tscn" id="1_yndca"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gotl3"]
+size = Vector3(1, 0.3, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e68bi"]
+size = Vector3(1, 0.3, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eo64f"]
+size = Vector3(1, 15, 15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ab1pm"]
+size = Vector3(15, 15, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdutp"]
+size = Vector3(15, 1, 15)
+
+[node name="BouncyBallCagePlatform" type="Node3D"]
+
+[node name="BouncyBall15m" parent="." instance=ExtResource("1_yndca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.671146, 5.8515, -0.0458515)
+
+[node name="BouncyBall15m2" parent="." instance=ExtResource("1_yndca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00479, 5.8515, 4.35249)
+
+[node name="BouncyBall15m3" parent="." instance=ExtResource("1_yndca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00479, 5.8515, 0.772266)
+bouncy_boost = 400.0
+
+[node name="BouncyBall15m4" parent="." instance=ExtResource("1_yndca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13033, 5.8515, -2.43793)
+
+[node name="Plank" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plank"]
+shape = SubResource("BoxShape3D_gotl3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plank"]
+mesh = SubResource("BoxMesh_e68bi")
+
+[node name="Cage" type="Node3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 0, 0.579228, 0.579228, -0.573577, 0.40558, 0.40558, 0.819152, 0, 0, 0)
+
+[node name="CageRight" type="StaticBody3D" parent="Cage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cage/CageRight"]
+shape = SubResource("BoxShape3D_eo64f")
+
+[node name="CageLeft" type="StaticBody3D" parent="Cage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cage/CageLeft"]
+shape = SubResource("BoxShape3D_eo64f")
+
+[node name="CageFront" type="StaticBody3D" parent="Cage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cage/CageFront"]
+shape = SubResource("BoxShape3D_ab1pm")
+
+[node name="CageBack" type="StaticBody3D" parent="Cage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cage/CageBack"]
+shape = SubResource("BoxShape3D_ab1pm")
+
+[node name="CageTop" type="StaticBody3D" parent="Cage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cage/CageTop"]
+shape = SubResource("BoxShape3D_sdutp")
+
+[node name="CageBottom" type="StaticBody3D" parent="Cage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 0)
+collision_layer = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cage/CageBottom"]
+shape = SubResource("BoxShape3D_sdutp")

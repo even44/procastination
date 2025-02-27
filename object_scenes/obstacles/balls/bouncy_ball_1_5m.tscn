@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3crougfwjqjl"]
+
+[ext_resource type="Material" uid="uid://54p3yg1y7r22" path="res://materials/balls/bouncy_ball_mat.tres" id="1_3fmjr"]
+[ext_resource type="Script" uid="uid://byqqkmh4k3qsa" path="res://scripts/game_objects/bouncy_ball.gd" id="1_mid3u"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mid3u"]
+bounce = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_uat03"]
+material = ExtResource("1_3fmjr")
+radius = 0.75
+height = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yrmwx"]
+radius = 0.75
+
+[node name="BouncyBall15m" type="Node3D"]
+script = ExtResource("1_mid3u")
+bouncy_boost = 1000.0
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_mask = 129
+mass = 69.0
+physics_material_override = SubResource("PhysicsMaterial_mid3u")
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 2
+linear_velocity = Vector3(0, 0, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_uat03")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_yrmwx")
+
+[connection signal="body_entered" from="RigidBody3D" to="." method="_on_ball_body_entered"]
