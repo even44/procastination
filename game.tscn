@@ -2,19 +2,21 @@
 
 [ext_resource type="Script" uid="uid://cbgmihqqc8c3s" path="res://scripts/game_initiator.gd" id="1_feb5d"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nq4xv"]
-sky_top_color = Color(0.29373, 0.453277, 0.674563, 1)
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_80nbo"]
+mie_coefficient = 0.011
+mie_eccentricity = 0.9
+turbidity = 1.0
+ground_color = Color(1, 1, 1, 1)
+energy_multiplier = 4.0
 
-[sub_resource type="Sky" id="Sky_cagh3"]
-sky_material = SubResource("ProceduralSkyMaterial_nq4xv")
+[sub_resource type="Sky" id="Sky_e2o6t"]
+sky_material = SubResource("PhysicalSkyMaterial_80nbo")
 
 [sub_resource type="Environment" id="Environment_5nolp"]
 background_mode = 2
-sky = SubResource("Sky_cagh3")
+sky = SubResource("Sky_e2o6t")
 ambient_light_source = 3
 reflected_light_source = 2
-ssao_enabled = true
-fog_enabled = true
 fog_mode = 1
 fog_density = 1.0
 fog_depth_curve = 4.43828
@@ -25,7 +27,7 @@ fog_depth_curve = 4.43828
 script = ExtResource("1_feb5d")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.951384, -0.0214983, 0.307255, 0.0803804, 0.945662, 0.315057, -0.297332, 0.324438, -0.89796, -0.0355268, 2.1993, -1.19209e-07)
+transform = Transform3D(-0.951385, -0.0214992, 0.307255, 0.30432, -0.219474, 0.926942, 0.0475055, 0.975382, 0.215346, -0.0355268, 2.1993, -1.19209e-07)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

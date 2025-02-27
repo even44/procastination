@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://isj11h7vu2yn"]
+
+[ext_resource type="PackedScene" uid="uid://ds2rvc2eutcfx" path="res://object_scenes/obstacles/spinners/spinner_2m.tscn" id="1_d1o1r"]
+[ext_resource type="Material" uid="uid://ywgvjkim7w0o" path="res://materials/platform/platform_white_mat.tres" id="1_ntc8k"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ntc8k"]
+material = ExtResource("1_ntc8k")
+size = Vector3(4, 1, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v78hu"]
+size = Vector3(4, 1, 4)
+
+[node name="SpinnerPlatform1x2m" type="Node3D"]
+
+[node name="Platform" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Platform"]
+mesh = SubResource("BoxMesh_ntc8k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Platform"]
+shape = SubResource("BoxShape3D_v78hu")
+
+[node name="Spinner2m" parent="." instance=ExtResource("1_d1o1r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

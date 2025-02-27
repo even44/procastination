@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxx47kkgiu8cl"]
+[gd_scene load_steps=5 format=3 uid="uid://bxx47kkgiu8cl"]
+
+[ext_resource type="PackedScene" uid="uid://isj11h7vu2yn" path="res://object_scenes/platforms/spinner_platform_1x_2m.tscn" id="1_ty3hu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyuys"]
 grow_amount = -3.165
@@ -54,3 +56,12 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
 shape = SubResource("BoxShape3D_ty3hu")
+
+[node name="SpinnerPlatform1x2m" parent="." instance=ExtResource("1_ty3hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68381, 0, -3.71424)
+
+[node name="SpinnerPlatform1x2m2" parent="." instance=ExtResource("1_ty3hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2698, 0, -1.55664)
+
+[node name="SpinnerPlatform1x2m3" parent="." instance=ExtResource("1_ty3hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1869, 0, 1.79145)
