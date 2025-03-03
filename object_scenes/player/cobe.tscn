@@ -1,18 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://b15q0aaxeafeb"]
 
 [ext_resource type="Script" uid="uid://dc8d1i3tgfpop" path="res://scripts/game_objects/cobe.gd" id="1_3x1ir"]
+[ext_resource type="Material" uid="uid://bh1wh8k2h06t" path="res://materials/player/player_mat.tres" id="2_arxwy"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_31iwq"]
 rough = true
 absorbent = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rcevp"]
-albedo_color = Color(0.954085, 0, 0.223785, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_arxwy"]
+material = ExtResource("2_arxwy")
 
-[sub_resource type="BoxMesh" id="BoxMesh_3a527"]
-material = SubResource("StandardMaterial3D_rcevp")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_dllqs"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_51qj2"]
 
 [node name="Cobe" type="RigidBody3D" node_paths=PackedStringArray("grounded_rays") groups=["Player"]]
 mass = 30.0
@@ -26,10 +24,10 @@ grounded_rays = [NodePath("RayCast3D"), NodePath("RayCast3D2"), NodePath("RayCas
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 gi_mode = 2
-mesh = SubResource("BoxMesh_3a527")
+mesh = SubResource("BoxMesh_arxwy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_dllqs")
+shape = SubResource("BoxShape3D_51qj2")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0.45, 0.45)

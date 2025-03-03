@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1eprnw8h4ind"]
+
+[ext_resource type="Theme" uid="uid://cc3os37xmbwy3" path="res://resources/ui/ui_theme.tres" id="1_j3nnp"]
+
+[node name="Timer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimerText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_j3nnp")
+text = "00:00:00"
+fit_content = true
+horizontal_alignment = 1
