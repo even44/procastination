@@ -18,6 +18,13 @@ func load_level(level_idx: int):
 		current_spawn_position = levels[current_level].spawn_position
 		current_spawn_rotation = levels[current_level].spawn_rotation
 
+		var  level_triggers = current_level_node.get_tree().get_nodes_in_group("LevelTrigger")
+		for trigger: LevelTrigger in level_triggers:
+			if (not trigger.trigger_next_level.is_connected(next_level)):
+				trigger.trigger_next_level.connect(next_level)
+			if (not trigger.trigger_restart_level.is_connected(restart_level)):
+				trigger.trigger_restart_level.connect(restart_level)
+
 		respawn_signal.emit(current_spawn_position, current_spawn_rotation)
 
 	else:

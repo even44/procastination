@@ -14,7 +14,7 @@ material = SubResource("StandardMaterial3D_rcevp")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dllqs"]
 
-[node name="Cobe" type="RigidBody3D" node_paths=PackedStringArray("grounded_rays")]
+[node name="Cobe" type="RigidBody3D" node_paths=PackedStringArray("grounded_rays") groups=["Player"]]
 mass = 30.0
 physics_material_override = SubResource("PhysicsMaterial_31iwq")
 continuous_cd = true

@@ -11,7 +11,6 @@ extends Node3D
 
 func _on_ball_body_entered(_body:Node):
 	var vel = ball.linear_velocity
-	print(vel.length())
 	if vel.length() < 60:
 		vel = vel.normalized()
 		ball.apply_impulse(vel * bouncy_boost)

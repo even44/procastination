@@ -43,4 +43,4 @@ func _input(event: InputEvent) -> void:
 
 func Respawn(_position: Vector3, _rotation: Vector3):
 	global_position = _position
-	global_rotation = _rotation
+	global_rotation_degrees = _rotation

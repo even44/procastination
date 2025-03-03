@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbqa5c1nxnsna"]
+
+[ext_resource type="PackedScene" uid="uid://cy404d8ais6ph" path="res://game_systems/triggers/level_trigger.tscn" id="1_k5l7b"]
+[ext_resource type="Material" uid="uid://dhekhd7pkols" path="res://materials/finish_line/finish_line_mat.tres" id="2_i5qss"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5qss"]
+size = Vector3(2, 2, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bhg4q"]
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ya358"]
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5ivu"]
+size = Vector3(2, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wyw6t"]
+material = ExtResource("2_i5qss")
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xa2fl"]
+material = ExtResource("2_i5qss")
+size = Vector3(0.1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u0wfx"]
+material = ExtResource("2_i5qss")
+size = Vector3(2, 0.1, 1)
+
+[node name="FinishLine" type="Node3D"]
+
+[node name="LevelTrigger" parent="." instance=ExtResource("1_k5l7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mode = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelTrigger"]
+shape = SubResource("BoxShape3D_i5qss")
+
+[node name="Frame" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Left" type="CollisionShape3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+shape = SubResource("BoxShape3D_bhg4q")
+
+[node name="Right" type="CollisionShape3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+shape = SubResource("BoxShape3D_ya358")
+
+[node name="Top" type="CollisionShape3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_f5ivu")
+
+[node name="LeftMesh" type="MeshInstance3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+mesh = SubResource("BoxMesh_wyw6t")
+
+[node name="RightMesh" type="MeshInstance3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+mesh = SubResource("BoxMesh_xa2fl")
+
+[node name="TopMesh" type="MeshInstance3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("BoxMesh_u0wfx")
+skeleton = NodePath("../RightMesh")

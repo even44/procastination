@@ -32,10 +32,12 @@ func spawn_player_and_camera(_position, _rotation):
 func spawn_player(_position: Vector3, _rotation: Vector3):
 	spawn_node.add_child(player)
 	player.global_position = _position
-	player.global_rotation = _rotation
+	player.global_rotation_degrees = _rotation
 
 func spawn_camera(_position, _rotation):
 	spawn_node.add_child(camera)
+	camera.global_position = _position
+	camera.global_rotation_degrees = _rotation
 
 func respawn_player_and_camera(_position: Vector3, _rotation: Vector3):
 	player.queue_free()

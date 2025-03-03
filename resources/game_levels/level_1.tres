@@ -7,4 +7,4 @@
 script = ExtResource("2_1v7l5")
 level_scene = ExtResource("1_w70fr")
 spawn_position = Vector3(0, 5, 0)
-spawn_rotation = Vector3(0, 0, 0)
+spawn_rotation = Vector3(0, -90, 0)

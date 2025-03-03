@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxx47kkgiu8cl"]
+[gd_scene load_steps=8 format=3 uid="uid://bxx47kkgiu8cl"]
 
 [ext_resource type="Material" uid="uid://ywgvjkim7w0o" path="res://materials/platform/platform_green_mat.tres" id="1_gg43x"]
 [ext_resource type="PackedScene" uid="uid://isj11h7vu2yn" path="res://object_scenes/platforms/spinner_platform_1x_2m.tscn" id="1_ty3hu"]
 [ext_resource type="PackedScene" uid="uid://nndxkxuntndg" path="res://object_scenes/platforms/ice_ball_platform_3x_2m.tscn" id="2_mckh2"]
 [ext_resource type="PackedScene" uid="uid://djmubjaxpg8gq" path="res://object_scenes/platforms/bouncy_ball_cage_platform.tscn" id="3_81a5f"]
+[ext_resource type="PackedScene" uid="uid://bbqa5c1nxnsna" path="res://object_scenes/triggers/finish_line.tscn" id="5_mllcm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_x0wso"]
 material = ExtResource("1_gg43x")
@@ -15,6 +16,7 @@ size = Vector3(10, 1, 10)
 [node name="Level01" type="Node3D"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.6581, 0, -17.4914)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 gi_mode = 2
@@ -25,7 +27,7 @@ skeleton = NodePath("../..")
 shape = SubResource("BoxShape3D_ty3hu")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -11.6959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6011, 0, 5.10539)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
 gi_mode = 2
@@ -33,17 +35,6 @@ mesh = SubResource("BoxMesh_x0wso")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("BoxShape3D_ty3hu")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9837, 0, -15.4214)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D5"]
-gi_mode = 2
-mesh = SubResource("BoxMesh_x0wso")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
 shape = SubResource("BoxShape3D_ty3hu")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
@@ -79,8 +70,26 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D7"]
 shape = SubResource("BoxShape3D_ty3hu")
 
+[node name="SpinnerPlatform1x2m4" parent="." instance=ExtResource("1_ty3hu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2787, 9.53674e-07, -8.4195)
+
+[node name="SpinnerPlatform1x2m5" parent="." instance=ExtResource("1_ty3hu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.3424, 0, -5.5319)
+
+[node name="SpinnerPlatform1x2m6" parent="." instance=ExtResource("1_ty3hu")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.6387, 0, -8.2771)
+
+[node name="Platform3xIceBall2" parent="." instance=ExtResource("2_mckh2")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.1028, 0, -8.2073)
+
+[node name="SpinnerPlatform1x2m7" parent="." instance=ExtResource("1_ty3hu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 42.5192, -4.76837e-07, -8.3148)
+
+[node name="BouncyBallCagePlatform2" parent="." instance=ExtResource("3_81a5f")]
+transform = Transform3D(0.00296701, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00296701, 52.7808, 0.295066, -8.2992)
+
 [node name="StaticBody3D6" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0863037, 0, 25.924)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0863037, 0, 0.622904)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D6"]
 gi_mode = 2
@@ -90,35 +99,20 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D6"]
 shape = SubResource("BoxShape3D_ty3hu")
 
-[node name="SpinnerPlatform1x2m" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1924, 9.53674e-07, -34.3435)
-
-[node name="SpinnerPlatform1x2m2" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.2561, 0, -31.4559)
-
-[node name="SpinnerPlatform1x2m3" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 31.5524, 0, -34.2011)
-
-[node name="Platform3xIceBall" parent="StaticBody3D6" instance=ExtResource("2_mckh2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 37.0165, 0, -34.1313)
-
-[node name="SpinnerPlatform1x2m4" parent="StaticBody3D6" instance=ExtResource("1_ty3hu")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 42.4329, -4.76837e-07, -34.2388)
-
-[node name="BouncyBallCagePlatform" parent="StaticBody3D6" instance=ExtResource("3_81a5f")]
-transform = Transform3D(0.00296701, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00296701, 52.6945, 0.295066, -34.2232)
-
 [node name="SpinnerPlatform1x2m" parent="." instance=ExtResource("1_ty3hu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68381, 0, -3.71424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.9341, 0, -0.483462)
 
 [node name="SpinnerPlatform1x2m2" parent="." instance=ExtResource("1_ty3hu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2698, 0, -1.55664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.3481, 0, 1.67414)
 
 [node name="SpinnerPlatform1x2m3" parent="." instance=ExtResource("1_ty3hu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1869, 0, 1.79145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.431, 0, 5.02223)
 
 [node name="Platform3xIceBall" parent="." instance=ExtResource("2_mckh2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9277, 0, -6.98489)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 47.9134, -9.53674e-07, 2.15469)
 
 [node name="BouncyBallCagePlatform" parent="." instance=ExtResource("3_81a5f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0271456, 0.431142, 12.8559)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 36.708, 0.431142, 2.20039)
+
+[node name="FinishLine" parent="." instance=ExtResource("5_mllcm")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 68.832, 0.5, -7.61731)
